@@ -1,4 +1,5 @@
-require './check_roster.rb'
+require './class_list.rb'
+require './list_comparison.rb'
 
 LIST916 = "tony123930@yahoo.com.tw
 crazyplum24@gmail.com
