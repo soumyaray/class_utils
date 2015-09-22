@@ -2,14 +2,14 @@ dir = File.expand_path(File.dirname(__FILE__))
 
 require "#{dir}/list_comparison"
 
- if ARGV.count < 2
-   puts "Usage:  check_roster [list1] [list2]\n"
-   exit
- end
+if ARGV.count < 2
+  puts "Usage:  check_roster [list1] [list2]\n"
+  exit
+end
 
 def parse_roster_file(filename)
   file = File.read(filename, encoding: 'GBK')
-  file.split("\n").map { |line| line.split(',').last}[1..-1].join("\n")
+  file.split("\n").map { |line| line.split(',').last }[1..-1].join("\n")
 end
 
 emails1 = parse_roster_file(ARGV[0])
