@@ -20,6 +20,7 @@ list2 = ClassList.new(emails2)
 
 change = ListComparison.new(list1, list2).compare
 
-puts "Newly joined: #{change[:joined]}"
-puts "Dropped out : #{change[:dropped]}"
+puts "NEWLY JOINED: \n#{change[:joined].join(", \n")}" if change[:joined].count > 0
+puts
+puts "DROPPED OUT: \n#{change[:dropped].join(", \n")}" if change[:dropped].count > 0
 puts
