@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/rg'
-require './class_list.rb'
-require './list_comparison.rb'
+require_relative '../lib/class-utils/class_list.rb'
+require_relative '../lib/class-utils/list_comparison.rb'
 
 LIST916 = "tony123930@yahoo.com.tw
 crazyplum24@gmail.com

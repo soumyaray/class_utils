@@ -1,6 +1,8 @@
+#!/usr/bin/env ruby
+
 dir = File.expand_path(File.dirname(__FILE__))
 
-require "#{dir}/list_comparison"
+require_relative './lib/class-utils.rb'
 
 if ARGV.count < 2
   puts "Usage:  check_roster [list1] [list2]\n"
