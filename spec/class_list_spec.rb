@@ -1,5 +1,3 @@
-require 'minitest/autorun'
-require 'minitest/rg'
 require './spec/spec_helper.rb'
 
 describe 'ClassList', 'List of students' do

@@ -1,3 +1,5 @@
+require 'minitest/autorun'
+require 'minitest/rg'
 require './class_list.rb'
 require './list_comparison.rb'
 
