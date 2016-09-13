@@ -9,20 +9,26 @@ if ARGV.count < 2
   exit
 end
 
-def parse_roster_file(filename)
-  file = File.read(filename, encoding: 'GBK')
-  file.split("\n").map { |line| line.split(',').last }[1..-1].join("\n")
+list1 = ClassList.new(ARGV[0])
+list2 = ClassList.new(ARGV[1])
+
+changed = ListComparison.new(list1, list2).compare
+
+def puts_student(student)
+  print "  "
+  print "#{student[:id]} #{student[:name_zh] }"
+  print "(#{student[:name_en]}) " unless student[:name_en].empty?
+  print "\t<#{student[:email]}> #{student[:dept_zh]}\n"
 end
 
-emails1 = parse_roster_file(ARGV[0])
-emails2 = parse_roster_file(ARGV[1])
+if changed[:joined].count > 0
+  puts 'NEWLY JOINED:'
+  changed[:joined].each { |student| puts_student(student) }
+end
 
-list1 = ClassList.new(emails1)
-list2 = ClassList.new(emails2)
+if changed[:dropped].count > 0
+  puts 'DROPPED OUT:'
+  changed[:dropped].each { |student| puts_student(student) }
+end
 
-change = ListComparison.new(list1, list2).compare
-
-puts "NEWLY JOINED: \n#{change[:joined].join(", \n")}" if change[:joined].count > 0
-puts
-puts "DROPPED OUT: \n#{change[:dropped].join(", \n")}" if change[:dropped].count > 0
 puts
