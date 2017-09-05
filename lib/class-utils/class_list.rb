@@ -10,7 +10,9 @@ class ClassList
     '註記' => :note,
     '電子郵件' => :email,
     '加選方式' => :info
-  }
+  }.freeze
+
+  NEWLINE = /\r?\n/
 
   def initialize(filename)
     file = File.read(filename, encoding: 'Big5').encode('utf-8')
@@ -20,8 +22,8 @@ class ClassList
   private
 
   def parse_roster_file(file)
-    lines = file.split("\n").map { |l| l.split(',') }
-    headers = lines.first.map{ |h| DICT_HEADERS[h] || 'NA'}
+    lines = file.split(NEWLINE).map { |l| l.split(',') }
+    headers = lines.first.map { |h| DICT_HEADERS[h] || 'NA' }
     lines[1..-1].map { |student_info| headers.zip(student_info).to_h }
   end
 end
