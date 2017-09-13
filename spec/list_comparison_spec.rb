@@ -1,19 +1,19 @@
 require './spec/spec_helper.rb'
 
-describe 'ListComparison', 'Service to compare lists' do
+describe 'RosterCompare', 'Service to compare lists' do
   before do
-    roster1 = ClassList.new('spec/test_cases/STU_LIST0916.csv')
-    roster2 = ClassList.new('spec/test_cases/STU_LIST0917.csv')
-    @rosters = ListComparison.new(roster1, roster2)
+    roster1 = Roster.new('spec/test_cases/STU_LIST-0830.csv')
+    roster2 = Roster.new('spec/test_cases/STU_LIST-0912.csv')
+    @changes = CompareRosters.new(roster1, roster2).call
   end
 
   it 'should find new students' do
-    emails_join = @rosters.compare[:joined].map { |student| student[:email] }
-    emails_join.must_equal ['angela.hung@iss.nthu.edu.tw']
+    joined_ids = @changes[:joined].map { |student| student[:id] }
+    joined_ids.must_equal ["104065423", "105061601", "105062558", "106062602", "106064515", "106064548"]
   end
 
   it 'should find dropped students' do
-    emails_drop = @rosters.compare[:dropped].map { |s| s[:email] }
-    emails_drop.must_equal ['loveangela31@gmail.com', 'clairecc@hotmail.com.tw']
+    dropped_ids = @changes[:dropped].map { |student| student[:id] }
+    dropped_ids.must_equal ["104042003", "105077506", "106061576", "106078507", "106078514", "106078516"]
   end
 end

@@ -7,10 +7,10 @@ if ARGV.count < 2
   exit
 end
 
-list1 = ClassList.new(ARGV[0])
-list2 = ClassList.new(ARGV[1])
+list1 = Roster.new(ARGV[0])
+list2 = Roster.new(ARGV[1])
 
-changed = ListComparison.new(list1, list2).compare
+changed = CompareRosters.new(list1, list2).call
 
 def puts_student(student)
   print '  '

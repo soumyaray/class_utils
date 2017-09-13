@@ -1,4 +1,4 @@
-class ClassList
+class Roster
   attr_reader :students
 
   DICT_HEADERS = {
@@ -17,6 +17,14 @@ class ClassList
   def initialize(filename)
     file = File.read(filename, encoding: 'Big5').encode('utf-8')
     @students = parse_roster_file(file)
+  end
+
+  def students_with_ids(ids)
+    students.select { |student| ids.include?(student[:id]) }
+  end
+
+  def ids
+    students.map { |student| student[:id] }
   end
 
   private
