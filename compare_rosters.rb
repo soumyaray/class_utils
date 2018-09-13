@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative './lib/class-utils.rb'
+require_relative './lib/nthu_class_utils.rb'
 
 if ARGV.count < 2
   puts "Usage:  check_roster [list1] [list2]\n"

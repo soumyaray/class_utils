@@ -1,6 +1,6 @@
-dir = File.expand_path(File.dirname(__FILE__))
-require "#{dir}/roster"
+require "#{__dir__}/roster"
 
+# Compares student lists between two Rosters
 class CompareRosters
   def initialize(old_roster, new_roster)
     @old_roster = old_roster

@@ -1,3 +1,4 @@
+# Encapsulates a student list
 class Roster
   attr_reader :students
 
