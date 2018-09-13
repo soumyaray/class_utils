@@ -5,13 +5,19 @@ class CompareRosters
   def initialize(old_roster, new_roster)
     @old_roster = old_roster
     @new_roster = new_roster
+
+    compare_rosters
   end
 
-  def call
+  attr_reader :joined, :dropped
+
+  private
+
+  def compare_rosters
     joined_ids = @new_roster.ids - @old_roster.ids
     dropped_ids = @old_roster.ids - @new_roster.ids
 
-    { joined: @new_roster.students_with_ids(joined_ids),
-      dropped: @old_roster.students_with_ids(dropped_ids) }
+    @joined = @new_roster.students_with_ids(joined_ids)
+    @dropped = @old_roster.students_with_ids(dropped_ids)
   end
 end

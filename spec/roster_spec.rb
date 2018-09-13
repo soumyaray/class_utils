@@ -1,7 +1,6 @@
 require './spec/spec_helper.rb'
 
 describe 'ClassList', 'List of students' do
-
   before do
     @roster = Roster.new('spec/test_cases/STU_LIST-0912.csv')
   end

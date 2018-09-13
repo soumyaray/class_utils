@@ -10,7 +10,7 @@ end
 list1 = Roster.new(ARGV[0])
 list2 = Roster.new(ARGV[1])
 
-changed = CompareRosters.new(list1, list2).call
+changed = CompareRosters.new(list1, list2)
 
 def puts_student(student)
   print '  '
@@ -19,14 +19,14 @@ def puts_student(student)
   print "\t<#{student[:email]}> #{student[:dept_zh]}\n"
 end
 
-if changed[:joined].count > 0
+if changed.joined.count > 0
   puts 'NEWLY JOINED:'
-  changed[:joined].each { |student| puts_student(student) }
+  changed.joined.each { |student| puts_student(student) }
 end
 
-if changed[:dropped].count > 0
+if changed.dropped.count > 0
   puts 'DROPPED OUT:'
-  changed[:dropped].each { |student| puts_student(student) }
+  changed.dropped.each { |student| puts_student(student) }
 end
 
 puts
